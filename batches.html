@@ -29,9 +29,7 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.06);
     }
 
-    .tab-btn {
-      transition: all 0.3s;
-    }
+    .tab-btn { transition: all 0.3s; }
     .tab-btn.active {
       background: linear-gradient(135deg, #6366f1, #a855f7);
       color: #fff;
@@ -41,7 +39,7 @@
     .folder-content { display: none; margin-top: 12px; padding-left: 16px; border-left: 2px solid #6366f1; }
     .folder-content.open { display: block; animation: slideDown 0.3s ease; }
     @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-    
+
     .file-card {
       background: rgba(255,255,255,0.04);
       border-radius: 14px;
@@ -59,102 +57,46 @@
     html.light .file-card { background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.06); }
     .file-card:hover { background: rgba(99,102,241,0.1); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(99,102,241,0.15); }
 
-    .file-card .thumb {
-      width: 80px;
-      height: 56px;
-      object-fit: cover;
-      border-radius: 10px;
-      flex-shrink: 0;
-      background: #1e293b;
-    }
-
-    .file-card .info {
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
+    .file-card .thumb { width: 80px; height: 56px; object-fit: cover; border-radius: 10px; flex-shrink: 0; background: #1e293b; }
+    .file-card .info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
     .file-card .title {
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 1.4;
-      color: #fff;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      font-weight: 600; font-size: 14px; line-height: 1.4; color: #fff;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     }
     html.light .file-card .title { color: #111; }
-
-    .file-card .meta {
-      font-size: 12px;
-      color: #9ca3af;
-      font-weight: 400;
-    }
+    .file-card .meta { font-size: 12px; color: #9ca3af; font-weight: 400; }
 
     @media (max-width: 480px) {
-      .file-card {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .file-card .thumb {
-        width: 100%;
-        height: 140px;
-        margin-bottom: 8px;
-      }
+      .file-card { flex-direction: column; align-items: stretch; }
+      .file-card .thumb { width: 100%; height: 140px; margin-bottom: 8px; }
     }
 
     .folder-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px;
-      cursor: pointer;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.04);
-      transition: 0.2s;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
+      display: flex; align-items: center; gap: 12px; padding: 14px; cursor: pointer;
+      border-radius: 14px; background: rgba(255,255,255,0.04); transition: 0.2s;
+      overflow: hidden; border: 1px solid rgba(255,255,255,0.05);
     }
     html.light .folder-header { background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.06); }
     .folder-header:hover { background: rgba(99,102,241,0.1); }
     .folder-icon { width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; }
-    .folder-title {
-      font-weight: 600;
-      font-size: 14px;
-      flex: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+    .folder-title { font-weight: 600; font-size: 14px; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .expand-arrow { font-size: 16px; color: #9ca3af; }
 
     #media-loading-overlay {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.85);
+      position: fixed; inset: 0; background: rgba(0,0,0,0.85);
       display: flex; align-items: center; justify-content: center;
       z-index: 999; backdrop-filter: blur(8px);
     }
     #media-loading-overlay.hidden { display: none; }
     .loading-card {
-      background: rgba(30,41,59,0.95);
-      border-radius: 24px;
-      padding: 32px;
-      text-align: center;
-      max-width: 360px;
-      width: 90%;
-      border: 1px solid rgba(255,255,255,0.1);
-      backdrop-filter: blur(20px);
+      background: rgba(30,41,59,0.95); border-radius: 24px; padding: 32px;
+      text-align: center; max-width: 360px; width: 90%;
+      border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(20px);
     }
     .loading-card .spinner {
-      width: 48px; height: 48px;
-      border: 4px solid rgba(255,255,255,0.2);
-      border-top-color: #6366f1;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: 0 auto 16px;
+      width: 48px; height: 48px; border: 4px solid rgba(255,255,255,0.2);
+      border-top-color: #6366f1; border-radius: 50%;
+      animation: spin 0.8s linear infinite; margin: 0 auto 16px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
     .loading-card p { margin: 0 0 16px; }
@@ -233,13 +175,11 @@
   </div>
 
   <script>
-    // ========== ENVIRONMENT CONFIG (centralized) ==========
+    // ========== CONFIG (no CORS proxy – direct API calls) ==========
     const CONFIG = {
       API_BASE: 'https://study-one-api.vercel.app/api',
       MEDIA_PROXY: 'https://study-one-access.vercel.app/media',
-      TELEGRAM_BOT: 'https://t.me/StudyOne_Key_Generator_Bot',
-      // CORS proxy is used automatically as fallback only if direct call fails
-      CORS_PROXY_FALLBACK: 'https://corsproxy.io/?'
+      TELEGRAM_BOT: 'https://t.me/StudyOne_Key_Generator_Bot'
     };
 
     // ========== THEME ==========
@@ -316,7 +256,7 @@
     mediaRetryBtn.addEventListener('click', () => { if (lastFileUrl) playMedia(lastFileUrl); });
     mediaOverlay.addEventListener('click', e => { if (e.target === mediaOverlay) hideMediaOverlay(); });
 
-    // ========== MEDIA FLOW (direct call with automatic fallback) ==========
+    // ========== MEDIA FLOW (direct API call, no CORS proxy) ==========
     async function getMediaUrl(mediaToken) {
       const data = await fetchAndDecode(`${CONFIG.API_BASE}/media/${mediaToken}`);
       if (!data.success || !data.file_url) throw new Error('Invalid media response');
@@ -326,40 +266,20 @@
     async function playMedia(fileUrl) {
       showMediaLoading();
       lastFileUrl = fileUrl;
-      const targetUrl = `${CONFIG.MEDIA_PROXY}?url=${encodeURIComponent(fileUrl)}`;
-
       try {
-        // 1. Try direct call first
-        let res = await fetch(targetUrl, {
-          mode: 'cors',
-          headers: { 'Accept': 'application/json' }
-        });
-        if (!res.ok) throw new Error(`Direct call failed (${res.status}). Falling back...`);
+        const apiUrl = `${CONFIG.MEDIA_PROXY}?url=${encodeURIComponent(fileUrl)}`;
+        const res = await fetch(apiUrl);
+        if (!res.ok) throw new Error(`API error: ${res.status}`);
         const data = await res.json();
         if (data.token) {
           window.open(`${CONFIG.TELEGRAM_BOT}?start=url_token_${data.token}`, '_blank');
           hideMediaOverlay();
-          return;
-        }
-        throw new Error('No token in response');
-      } catch (directError) {
-        // 2. If direct call fails (CORS, 403, etc.), automatically try via fallback proxy
-        console.warn('Direct call failed, trying fallback proxy:', directError);
-        try {
-          const proxyUrl = `${CONFIG.CORS_PROXY_FALLBACK}${encodeURIComponent(targetUrl)}`;
-          const res = await fetch(proxyUrl);
-          if (!res.ok) throw new Error(`Proxy error: ${res.status}`);
-          const data = await res.json();
-          if (data.token) {
-            window.open(`${CONFIG.TELEGRAM_BOT}?start=url_token_${data.token}`, '_blank');
-            hideMediaOverlay();
-            return;
-          }
+        } else {
           throw new Error('No token in response');
-        } catch (proxyError) {
-          console.error(proxyError);
-          showMediaError(`Unable to prepare your media. Please try again.`);
         }
+      } catch (err) {
+        console.error(err);
+        showMediaError(`Unable to prepare your media: ${err.message}. Please try again.`);
       }
     }
 
@@ -421,18 +341,13 @@
         }
 
         if (contentToken) {
-          try {
-            await loadContentTree(contentToken);
-          } catch (e) {
-            console.warn('Content tree load failed:', e);
-            fileGrid.innerHTML = '<div class="text-center text-zinc-400 py-8">⚠️ Content not available.</div>';
-          }
+          try { await loadContentTree(contentToken); }
+          catch (e) { fileGrid.innerHTML = '<div class="text-center text-zinc-400 py-8">⚠️ Content not available.</div>'; }
         } else {
           fileGrid.innerHTML = '<div class="text-center text-zinc-400 py-8">No content token available.</div>';
           subjectList.innerHTML = '<li class="text-zinc-500 text-sm">No subjects</li>';
         }
       } catch (e) {
-        console.error('Course load failed:', e);
         batchTitleEl.textContent = 'Error loading batch';
         descContainer.innerHTML = `<p class="text-red-400">Failed to load batch: ${e.message}</p>`;
       } finally {
@@ -442,9 +357,7 @@
 
     async function loadContentTree(token) {
       const json = await fetchAndDecode(`${CONFIG.API_BASE}/content/${token}`);
-      if (json.data) {
-        renderRootFolders(json.data);
-      }
+      if (json.data) renderRootFolders(json.data);
     }
 
     function renderRootFolders(folders) {
@@ -483,7 +396,7 @@
         const json = await fetchAndDecode(`${CONFIG.API_BASE}/content/${folderToken}`);
         renderItems(json.data, folderToken);
       } catch (e) {
-        fileGrid.innerHTML = `<div class="text-center text-red-400 py-8">Failed to load folder: ${e.message}. <button onclick="loadFolderContents('${folderToken}')" class="underline text-indigo-400">Retry</button></div>`;
+        fileGrid.innerHTML = `<div class="text-center text-red-400 py-8">Failed to load: ${e.message}. <button onclick="loadFolderContents('${folderToken}')" class="underline text-indigo-400">Retry</button></div>`;
       }
     }
 
@@ -494,4 +407,157 @@
         return;
       }
       items.forEach(item => {
-        if (item.type === 'folder'
+        if (item.type === 'folder') {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'folder-header';
+          wrapper.innerHTML = `<img src="images/folder.png" alt="folder" class="folder-icon" /><span class="folder-title">${item.title}</span><span class="expand-arrow">▶</span>`;
+          const subContainer = document.createElement('div');
+          subContainer.className = 'folder-content';
+          wrapper.appendChild(subContainer);
+          fileGrid.appendChild(wrapper);
+          wrapper.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const arrow = wrapper.querySelector('.expand-arrow');
+            if (subContainer.classList.contains('open')) {
+              subContainer.classList.remove('open');
+              subContainer.innerHTML = '';
+              arrow.textContent = '▶';
+              return;
+            }
+            subContainer.classList.add('open');
+            arrow.textContent = '▼';
+            subContainer.innerHTML = '<div class="text-center text-zinc-400 py-4">Loading...</div>';
+            try {
+              const json = await fetchAndDecode(`${CONFIG.API_BASE}/content/${item.token}`);
+              const children = json.data || [];
+              const files = children.filter(f => f.type === 'file');
+              const subFolders = children.filter(f => f.type === 'folder');
+              subContainer.innerHTML = '';
+              subFolders.forEach(sub => {
+                const subCard = document.createElement('div');
+                subCard.className = 'folder-header';
+                subCard.innerHTML = `<img src="images/folder.png" class="folder-icon" style="width:30px;height:30px;" /><span class="folder-title">${sub.title}</span>`;
+                subCard.addEventListener('click', (e2) => { e2.stopPropagation(); folderStack.push({ token: sub.token, title: sub.title }); loadFolderContents(sub.token); });
+                subContainer.appendChild(subCard);
+              });
+              files.forEach(file => {
+                const fileCard = document.createElement('div');
+                fileCard.className = 'file-card';
+                const img = document.createElement('img');
+                img.className = 'thumb';
+                img.src = file.thumbnail || '';
+                img.alt = '';
+                img.onerror = () => { img.src = 'data:image/svg+xml,...'; };
+                fileCard.appendChild(img);
+                const info = document.createElement('div');
+                info.className = 'info';
+                info.innerHTML = `<div class="title">${file.title}</div><div class="meta">${file.file_type === 2 ? '🎬 Video' : '📄 PDF'}</div>`;
+                fileCard.appendChild(info);
+                fileCard.addEventListener('click', () => handleFileClick(file));
+                subContainer.appendChild(fileCard);
+              });
+              if (!subFolders.length && !files.length) subContainer.innerHTML = '<div class="text-zinc-500 text-sm p-2">This folder is empty</div>';
+              subContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } catch (err) {
+              subContainer.innerHTML = `<div class="text-red-400 text-sm p-2">Failed to load: ${err.message}. <button class="underline text-indigo-400" onclick="this.parentElement.innerHTML='Loading...'; loadSubFolderContent('${item.token}', this.parentElement)">Retry</button></div>`;
+            }
+          });
+        } else if (item.type === 'file') {
+          const card = document.createElement('div');
+          card.className = 'file-card';
+          const img = document.createElement('img');
+          img.className = 'thumb';
+          img.src = item.thumbnail || '';
+          img.alt = '';
+          img.onerror = () => { img.src = 'data:image/svg+xml,...'; };
+          card.appendChild(img);
+          const info = document.createElement('div');
+          info.className = 'info';
+          info.innerHTML = `<div class="title">${item.title}</div><div class="meta">${item.file_type === 2 ? '🎬 Video' : '📄 PDF'}</div>`;
+          card.appendChild(info);
+          card.addEventListener('click', () => handleFileClick(item));
+          fileGrid.appendChild(card);
+        }
+      });
+      updateBreadcrumb();
+    }
+
+    window.loadSubFolderContent = async function(token, container) {
+      try {
+        container.innerHTML = '<div class="text-center text-zinc-400 py-4">Loading...</div>';
+        const json = await fetchAndDecode(`${CONFIG.API_BASE}/content/${token}`);
+        const children = json.data || [];
+        const files = children.filter(f => f.type === 'file');
+        const subFolders = children.filter(f => f.type === 'folder');
+        container.innerHTML = '';
+        subFolders.forEach(sub => {
+          const subCard = document.createElement('div');
+          subCard.className = 'folder-header';
+          subCard.innerHTML = `<img src="images/folder.png" class="folder-icon" style="width:30px;height:30px;" /><span class="folder-title">${sub.title}</span>`;
+          subCard.addEventListener('click', (e2) => { e2.stopPropagation(); folderStack.push({ token: sub.token, title: sub.title }); loadFolderContents(sub.token); });
+          container.appendChild(subCard);
+        });
+        files.forEach(file => {
+          const fileCard = document.createElement('div');
+          fileCard.className = 'file-card';
+          const img = document.createElement('img');
+          img.className = 'thumb';
+          img.src = file.thumbnail || '';
+          img.alt = '';
+          img.onerror = () => { img.src = 'data:image/svg+xml,...'; };
+          fileCard.appendChild(img);
+          const info = document.createElement('div');
+          info.className = 'info';
+          info.innerHTML = `<div class="title">${file.title}</div><div class="meta">${file.file_type === 2 ? '🎬 Video' : '📄 PDF'}</div>`;
+          fileCard.appendChild(info);
+          fileCard.addEventListener('click', () => handleFileClick(file));
+          container.appendChild(fileCard);
+        });
+      } catch (err) {
+        container.innerHTML = `<div class="text-red-400 text-sm p-2">Failed to load: ${err.message}. <button class="underline text-indigo-400" onclick="loadSubFolderContent('${token}', this.parentElement)">Retry</button></div>`;
+      }
+    };
+
+    async function handleFileClick(file) {
+      showMediaLoading();
+      try {
+        const fileUrl = await getMediaUrl(file.token);
+        await playMedia(fileUrl);
+      } catch (e) {
+        showMediaError(`Failed to get media: ${e.message}`);
+      }
+    }
+
+    function updateBreadcrumb() {
+      breadcrumb.innerHTML = '';
+      folderStack.forEach((f, i) => {
+        if (i < folderStack.length - 1) {
+          const btn = document.createElement('button');
+          btn.className = 'text-indigo-400 hover:text-indigo-300 transition';
+          btn.textContent = f.title;
+          btn.addEventListener('click', () => { folderStack = folderStack.slice(0, i + 1); loadFolderContents(folderStack[i].token); });
+          breadcrumb.appendChild(btn);
+          breadcrumb.appendChild(document.createTextNode(' / '));
+        } else {
+          const span = document.createElement('span');
+          span.className = 'text-white font-semibold';
+          span.textContent = f.title;
+          breadcrumb.appendChild(span);
+        }
+      });
+    }
+
+    async function loadBatch() {
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get('token');
+      if (!token) {
+        loader.innerHTML = '<p class="text-red-400">No batch token provided. <a href="index.html" class="underline">Go to list</a></p>';
+        return;
+      }
+      loadCourse(token);
+    }
+
+    loadBatch();
+  </script>
+</body>
+</html>
