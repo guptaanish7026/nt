@@ -175,11 +175,12 @@
   </div>
 
   <script>
-    // ========== CONFIG (no CORS proxy – direct API calls) ==========
+    // ========== CONFIG ==========
     const CONFIG = {
       API_BASE: 'https://study-one-api.vercel.app/api',
       MEDIA_PROXY: 'https://study-one-access.vercel.app/media',
-      TELEGRAM_BOT: 'https://t.me/StudyOne_Key_Generator_Bot'
+      TELEGRAM_BOT: 'https://t.me/StudyOne_Key_Generator_Bot',
+      REFERER: 'https://study-one-api.vercel.app'   // required by the API
     };
 
     // ========== THEME ==========
@@ -196,9 +197,11 @@
       applyTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark');
     });
 
-    // ========== ZSTD DECOMPRESSION ==========
+    // ========== ZSTD DECOMPRESSION (with Referer header) ==========
     async function fetchAndDecode(url) {
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        headers: { 'Referer': CONFIG.REFERER }
+      });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const buffer = await res.arrayBuffer();
       try {
@@ -256,7 +259,7 @@
     mediaRetryBtn.addEventListener('click', () => { if (lastFileUrl) playMedia(lastFileUrl); });
     mediaOverlay.addEventListener('click', e => { if (e.target === mediaOverlay) hideMediaOverlay(); });
 
-    // ========== MEDIA FLOW (direct API call, no CORS proxy) ==========
+    // ========== MEDIA FLOW (with Referer header) ==========
     async function getMediaUrl(mediaToken) {
       const data = await fetchAndDecode(`${CONFIG.API_BASE}/media/${mediaToken}`);
       if (!data.success || !data.file_url) throw new Error('Invalid media response');
@@ -268,7 +271,9 @@
       lastFileUrl = fileUrl;
       try {
         const apiUrl = `${CONFIG.MEDIA_PROXY}?url=${encodeURIComponent(fileUrl)}`;
-        const res = await fetch(apiUrl);
+        const res = await fetch(apiUrl, {
+          headers: { 'Referer': CONFIG.REFERER }
+        });
         if (!res.ok) throw new Error(`API error: ${res.status}`);
         const data = await res.json();
         if (data.token) {
@@ -283,7 +288,7 @@
       }
     }
 
-    // ========== BATCH LOGIC ==========
+    // ========== BATCH LOGIC (unchanged, but uses the same fetchAndDecode with Referer) ==========
     const loader = document.getElementById('loader');
     const app = document.getElementById('app');
     const batchTitleEl = document.getElementById('batch-title');
