@@ -17,52 +17,30 @@
 
     .glass-card {
       background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.5);
-      transition: all 0.3s ease;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.5); transition: all 0.3s ease;
     }
-    html.light .glass-card {
-      background: rgba(255,255,255,0.7);
-      border: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
-    }
+    html.light .glass-card { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.08); box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
 
     .tab-btn { transition: all 0.3s; }
-    .tab-btn.active {
-      background: linear-gradient(135deg, #6366f1, #a855f7);
-      color: #fff;
-      box-shadow: 0 8px 24px rgba(99,102,241,0.4);
-    }
+    .tab-btn.active { background: linear-gradient(135deg, #6366f1, #a855f7); color: #fff; box-shadow: 0 8px 24px rgba(99,102,241,0.4); }
 
     .folder-content { display: none; margin-top: 12px; padding-left: 16px; border-left: 2px solid #6366f1; }
     .folder-content.open { display: block; animation: slideDown 0.3s ease; }
     @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
     .file-card {
-      background: rgba(255,255,255,0.04);
-      border-radius: 14px;
-      padding: 14px;
-      margin-bottom: 10px;
-      display: flex;
-      gap: 14px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      overflow: hidden;
-      word-break: break-word;
-      align-items: center;
-      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.04); border-radius: 14px; padding: 14px; margin-bottom: 10px;
+      display: flex; gap: 14px; cursor: pointer; transition: all 0.2s ease;
+      overflow: hidden; word-break: break-word; align-items: center; border: 1px solid rgba(255,255,255,0.05);
     }
     html.light .file-card { background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.06); }
     .file-card:hover { background: rgba(99,102,241,0.1); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(99,102,241,0.15); }
 
     .file-card .thumb { width: 80px; height: 56px; object-fit: cover; border-radius: 10px; flex-shrink: 0; background: #1e293b; }
     .file-card .info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
-    .file-card .title {
-      font-weight: 600; font-size: 14px; line-height: 1.4; color: #fff;
-      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-    }
+    .file-card .title { font-weight: 600; font-size: 14px; line-height: 1.4; color: #fff; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     html.light .file-card .title { color: #111; }
     .file-card .meta { font-size: 12px; color: #9ca3af; font-weight: 400; }
 
@@ -82,29 +60,30 @@
     .folder-title { font-weight: 600; font-size: 14px; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .expand-arrow { font-size: 16px; color: #9ca3af; }
 
-    #media-loading-overlay {
+    /* Overlays */
+    #media-loading-overlay, #media-fallback-overlay {
       position: fixed; inset: 0; background: rgba(0,0,0,0.85);
       display: flex; align-items: center; justify-content: center;
       z-index: 999; backdrop-filter: blur(8px);
     }
-    #media-loading-overlay.hidden { display: none; }
-    .loading-card {
-      background: rgba(30,41,59,0.95); border-radius: 24px; padding: 32px;
-      text-align: center; max-width: 360px; width: 90%;
-      border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(20px);
+    #media-loading-overlay.hidden, #media-fallback-overlay.hidden { display: none; }
+    .loading-card, .fallback-card {
+      background: rgba(30,41,59,0.95); border-radius: 24px; padding: 32px; text-align: center;
+      max-width: 400px; width: 90%; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(20px);
     }
     .loading-card .spinner {
       width: 48px; height: 48px; border: 4px solid rgba(255,255,255,0.2);
-      border-top-color: #6366f1; border-radius: 50%;
-      animation: spin 0.8s linear infinite; margin: 0 auto 16px;
+      border-top-color: #6366f1; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .loading-card p { margin: 0 0 16px; }
-    .loading-card .btn {
+    .loading-card p, .fallback-card p { margin: 0 0 16px; }
+    .loading-card .btn, .fallback-card .btn {
       background: #6366f1; border: none; color: white;
       padding: 10px 24px; border-radius: 12px; cursor: pointer; font-weight: 600; margin: 4px;
     }
-    .loading-card .btn-danger { background: #ef4444; }
+    .loading-card .btn-danger, .fallback-card .btn-danger { background: #ef4444; }
+    .fallback-card .btn-copy { background: #10b981; }
+    .fallback-card .btn-view { background: #6366f1; }
 
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -131,6 +110,19 @@
         <button class="btn" id="media-retry-btn">Retry</button>
       </div>
       <button id="media-close-btn" class="btn btn-danger hidden mt-4">Close</button>
+    </div>
+  </div>
+
+  <!-- Fallback overlay (shown when popup is blocked) -->
+  <div id="media-fallback-overlay" class="hidden">
+    <div class="fallback-card">
+      <p class="text-lg font-semibold text-white">Your Video / PDF is Ready!</p>
+      <p class="text-sm text-zinc-400">Click below to View, or Copy the link.</p>
+      <div class="flex flex-col gap-3 mt-4">
+        <button class="btn btn-view" id="fallback-view-btn">View</button>
+        <button class="btn btn-copy" id="fallback-copy-btn">Copy Link</button>
+      </div>
+      <button id="fallback-close-btn" class="btn btn-danger mt-4">Close</button>
     </div>
   </div>
 
@@ -180,7 +172,7 @@
       API_BASE: 'https://study-one-api.vercel.app/api',
       MEDIA_PROXY: 'https://study-one-access.vercel.app/media',
       TELEGRAM_BOT: 'https://t.me/StudyOne_Key_Generator_Bot',
-      REFERER: 'https://study-one-api.vercel.app'   // required by the API
+      REFERER: 'https://study-one-api.vercel.app'
     };
 
     // ========== THEME ==========
@@ -197,11 +189,9 @@
       applyTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark');
     });
 
-    // ========== ZSTD DECOMPRESSION (with Referer header) ==========
+    // ========== ZSTD DECOMPRESSION ==========
     async function fetchAndDecode(url) {
-      const res = await fetch(url, {
-        headers: { 'Referer': CONFIG.REFERER }
-      });
+      const res = await fetch(url, { headers: { 'Referer': CONFIG.REFERER } });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const buffer = await res.arrayBuffer();
       try {
@@ -209,40 +199,44 @@
         const decompressed = decoder.decode(new Uint8Array(buffer));
         const text = new TextDecoder().decode(decompressed);
         const json = JSON.parse(text);
-        if (!json.success) throw new Error(json.message || 'API returned success: false');
         return json;
       } catch (zstdError) {
         try {
           const text = new TextDecoder().decode(buffer);
-          const json = JSON.parse(text);
-          if (!json.success) throw new Error(json.message || 'API returned success: false');
-          return json;
+          return JSON.parse(text);
         } catch (plainError) {
           throw new Error(`Failed to parse API response: ${zstdError.message}`);
         }
       }
     }
 
-    // ========== MEDIA OVERLAY ==========
-    const mediaOverlay = document.getElementById('media-loading-overlay');
+    // ========== MEDIA OVERLAYS ==========
+    const loadingOverlay = document.getElementById('media-loading-overlay');
+    const fallbackOverlay = document.getElementById('media-fallback-overlay');
     const mediaSpinner = document.getElementById('media-spinner');
     const mediaStatusText = document.getElementById('media-status-text');
     const mediaErrorText = document.getElementById('media-error-text');
     const mediaErrorContainer = document.getElementById('media-error-container');
     const mediaRetryBtn = document.getElementById('media-retry-btn');
     const mediaCloseBtn = document.getElementById('media-close-btn');
-    let lastFileUrl = null;
+    const fallbackViewBtn = document.getElementById('fallback-view-btn');
+    const fallbackCopyBtn = document.getElementById('fallback-copy-btn');
+    const fallbackCloseBtn = document.getElementById('fallback-close-btn');
 
-    function showMediaLoading(message = "Getting Your Media Ready...") {
+    let lastFileUrl = null;
+    let pendingRedirectUrl = null;
+
+    function showLoading(message = "Getting Your Media Ready...") {
       mediaSpinner.classList.remove('hidden');
       mediaStatusText.textContent = message;
       mediaStatusText.classList.remove('hidden');
       mediaErrorContainer.classList.add('hidden');
       mediaCloseBtn.classList.add('hidden');
-      mediaOverlay.classList.remove('hidden');
+      loadingOverlay.classList.remove('hidden');
+      fallbackOverlay.classList.add('hidden');
     }
 
-    function showMediaError(message) {
+    function showError(message) {
       mediaSpinner.classList.add('hidden');
       mediaStatusText.classList.add('hidden');
       mediaErrorText.textContent = message;
@@ -250,45 +244,100 @@
       mediaCloseBtn.classList.remove('hidden');
     }
 
-    function hideMediaOverlay() {
-      mediaOverlay.classList.add('hidden');
+    function hideAllOverlays() {
+      loadingOverlay.classList.add('hidden');
+      fallbackOverlay.classList.add('hidden');
       lastFileUrl = null;
+      pendingRedirectUrl = null;
     }
 
-    mediaCloseBtn.addEventListener('click', hideMediaOverlay);
-    mediaRetryBtn.addEventListener('click', () => { if (lastFileUrl) playMedia(lastFileUrl); });
-    mediaOverlay.addEventListener('click', e => { if (e.target === mediaOverlay) hideMediaOverlay(); });
+    function showFallback(redirectUrl) {
+      loadingOverlay.classList.add('hidden');
+      pendingRedirectUrl = redirectUrl;
+      fallbackOverlay.classList.remove('hidden');
+    }
 
-    // ========== MEDIA FLOW (with Referer header) ==========
+    mediaCloseBtn.addEventListener('click', hideAllOverlays);
+    fallbackCloseBtn.addEventListener('click', hideAllOverlays);
+    mediaRetryBtn.addEventListener('click', () => { if (lastFileUrl) playMedia(lastFileUrl); });
+
+    fallbackViewBtn.addEventListener('click', () => {
+      if (pendingRedirectUrl) {
+        window.open(pendingRedirectUrl, '_blank');
+        hideAllOverlays();
+      }
+    });
+
+    fallbackCopyBtn.addEventListener('click', async () => {
+      if (pendingRedirectUrl) {
+        try {
+          await navigator.clipboard.writeText(pendingRedirectUrl);
+          fallbackCopyBtn.textContent = 'Copied!';
+          setTimeout(() => { fallbackCopyBtn.textContent = 'Copy Link'; }, 2000);
+        } catch {
+          // Fallback: select from a temporary input
+          const ta = document.createElement('textarea');
+          ta.value = pendingRedirectUrl;
+          ta.style.position = 'fixed'; ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta);
+          fallbackCopyBtn.textContent = 'Copied!';
+          setTimeout(() => { fallbackCopyBtn.textContent = 'Copy Link'; }, 2000);
+        }
+      }
+    });
+
+    loadingOverlay.addEventListener('click', e => { if (e.target === loadingOverlay) hideAllOverlays(); });
+    fallbackOverlay.addEventListener('click', e => { if (e.target === fallbackOverlay) hideAllOverlays(); });
+
+    // ========== MEDIA FLOW ==========
     async function getMediaUrl(mediaToken) {
       const data = await fetchAndDecode(`${CONFIG.API_BASE}/media/${mediaToken}`);
-      if (!data.success || !data.file_url) throw new Error('Invalid media response');
-      return data.file_url;
+
+      // Try multiple known field names for the actual media URL
+      const fileUrl = data.file_url || data.url || data.video_url || data.stream_url;
+
+      if (fileUrl) return fileUrl;
+
+      // If the API returned the file URL directly as a string at some other key
+      // Log the response for debugging
+      console.warn('Unexpected media response format:', data);
+      throw new Error('Media URL not found in response');
     }
 
     async function playMedia(fileUrl) {
-      showMediaLoading();
+      showLoading();
       lastFileUrl = fileUrl;
       try {
         const apiUrl = `${CONFIG.MEDIA_PROXY}?url=${encodeURIComponent(fileUrl)}`;
-        const res = await fetch(apiUrl, {
-          headers: { 'Referer': CONFIG.REFERER }
-        });
+        const res = await fetch(apiUrl, { headers: { 'Referer': CONFIG.REFERER } });
         if (!res.ok) throw new Error(`API error: ${res.status}`);
         const data = await res.json();
-        if (data.token) {
-          window.open(`${CONFIG.TELEGRAM_BOT}?start=url_token_${data.token}`, '_blank');
-          hideMediaOverlay();
+
+        // The media proxy returns { "token": "M1_xxx" }
+        const token = data.token;
+        if (!token) throw new Error('No token in response');
+
+        const redirectUrl = `${CONFIG.TELEGRAM_BOT}?start=url_token_${token}`;
+
+        // Try to open the redirect; if blocked, show the fallback
+        const popup = window.open(redirectUrl, '_blank');
+
+        // Detect if popup was blocked
+        if (!popup || popup.closed === undefined || popup.closed) {
+          // Popup might be blocked – show fallback
+          showFallback(redirectUrl);
         } else {
-          throw new Error('No token in response');
+          hideAllOverlays();
         }
       } catch (err) {
         console.error(err);
-        showMediaError(`Unable to prepare your media: ${err.message}. Please try again.`);
+        showError(`Unable to prepare your media: ${err.message}. Please try again.`);
       }
     }
 
-    // ========== BATCH LOGIC (unchanged, but uses the same fetchAndDecode with Referer) ==========
+    // ========== BATCH LOGIC ==========
     const loader = document.getElementById('loader');
     const app = document.getElementById('app');
     const batchTitleEl = document.getElementById('batch-title');
@@ -424,13 +473,9 @@
             e.stopPropagation();
             const arrow = wrapper.querySelector('.expand-arrow');
             if (subContainer.classList.contains('open')) {
-              subContainer.classList.remove('open');
-              subContainer.innerHTML = '';
-              arrow.textContent = '▶';
-              return;
+              subContainer.classList.remove('open'); subContainer.innerHTML = ''; arrow.textContent = '▶'; return;
             }
-            subContainer.classList.add('open');
-            arrow.textContent = '▼';
+            subContainer.classList.add('open'); arrow.textContent = '▼';
             subContainer.innerHTML = '<div class="text-center text-zinc-400 py-4">Loading...</div>';
             try {
               const json = await fetchAndDecode(`${CONFIG.API_BASE}/content/${item.token}`);
@@ -449,9 +494,7 @@
                 const fileCard = document.createElement('div');
                 fileCard.className = 'file-card';
                 const img = document.createElement('img');
-                img.className = 'thumb';
-                img.src = file.thumbnail || '';
-                img.alt = '';
+                img.className = 'thumb'; img.src = file.thumbnail || ''; img.alt = '';
                 img.onerror = () => { img.src = 'data:image/svg+xml,...'; };
                 fileCard.appendChild(img);
                 const info = document.createElement('div');
@@ -471,9 +514,7 @@
           const card = document.createElement('div');
           card.className = 'file-card';
           const img = document.createElement('img');
-          img.className = 'thumb';
-          img.src = item.thumbnail || '';
-          img.alt = '';
+          img.className = 'thumb'; img.src = item.thumbnail || ''; img.alt = '';
           img.onerror = () => { img.src = 'data:image/svg+xml,...'; };
           card.appendChild(img);
           const info = document.createElement('div');
@@ -506,9 +547,7 @@
           const fileCard = document.createElement('div');
           fileCard.className = 'file-card';
           const img = document.createElement('img');
-          img.className = 'thumb';
-          img.src = file.thumbnail || '';
-          img.alt = '';
+          img.className = 'thumb'; img.src = file.thumbnail || ''; img.alt = '';
           img.onerror = () => { img.src = 'data:image/svg+xml,...'; };
           fileCard.appendChild(img);
           const info = document.createElement('div');
@@ -524,12 +563,13 @@
     };
 
     async function handleFileClick(file) {
-      showMediaLoading();
+      showLoading();
       try {
         const fileUrl = await getMediaUrl(file.token);
         await playMedia(fileUrl);
       } catch (e) {
-        showMediaError(`Failed to get media: ${e.message}`);
+        console.error(e);
+        showError(`Failed to get media: ${e.message}`);
       }
     }
 
